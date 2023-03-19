@@ -95,9 +95,9 @@ class FourierCirclesScene(ZoomedScene):
         last_vector = None
         for freq, coefficient in zip(freqs, coefficients):
             if last_vector:
-                center_func = last_vector.get_end()
+                center_func = last_vector.get_end
             else:
-                center_func = self.center_tracker.get_location()
+                center_func = self.center_tracker.get_location
             vector = self.get_rotating_vector(
                 coefficient=coefficient,
                 freq=freq,
@@ -129,7 +129,7 @@ class FourierCirclesScene(ZoomedScene):
 
         vector.set_length(abs(coef))
         vector.set_angle(phase + time * freq * TAU)
-        vector.shift(vector.center_func - vector.get_start())
+        vector.shift(vector.center_func() - vector.get_start())
         return vector
 
     def get_circles(self, vectors):
@@ -390,7 +390,7 @@ class AbstractFourierOfTexSymbol(FourierCirclesScene):
         "center_point": ORIGIN,
         "slow_factor": 0.05,
         "n_cycles": None,
-        "run_time": 2,
+        "run_time": 1,
         "start_drawn": True,
         "path_custom_position": lambda mob: mob,
         "max_circle_stroke_width": 1,
@@ -465,7 +465,7 @@ class AbstractFourierOfTexSymbol(FourierCirclesScene):
 
     def get_path(self):
         paths = VGroup()
-        tex_mob=VGroup(Square(), Triangle()).arrange(RIGHT, buff=.05)
+        tex_mob=VGroup(MathTex(r'\rm R', **self.CONFIG['tex_config']), MathTex(r'\rm F', **self.CONFIG['tex_config'])).arrange(RIGHT, buff=.05)
         tex_mob.set(height=6)
         for tex in tex_mob:
             path = tex.family_members_with_points()[0]
