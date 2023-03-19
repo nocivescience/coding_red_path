@@ -465,7 +465,7 @@ class AbstractFourierOfTexSymbol(FourierCirclesScene):
 
     def get_path(self):
         paths = VGroup()
-        tex_mob=VGroup(MathTex(r'\rm R', **self.CONFIG['tex_config']), MathTex(r'\rm F', **self.CONFIG['tex_config'])).arrange(RIGHT, buff=.05)
+        tex_mob=VGroup(Square(), Triangle()).arrange(RIGHT, buff=.05)
         tex_mob.set(height=6)
         for tex in tex_mob:
             path = tex.family_members_with_points()[0]
